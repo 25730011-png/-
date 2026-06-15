@@ -1789,6 +1789,47 @@ function restartGame() {
     veil.classList.remove('active');
   }, 350);
 }
+   const SCENE_VIDEOS = {
+  S1: "media/S1.mp4",
+  S2: "media/S2.mp4",
+  S3: "media/S3.mp4",
+  S4: "media/S4.mp4",
+  S5: "media/S5.mp4",
+  S6: "media/S6.mp4"
+};
+
+function playSceneVideo(sceneId) {
+  return new Promise(resolve => {
+
+    const overlay = document.getElementById("video-overlay");
+    const video = document.getElementById("scene-video");
+
+    if (!overlay || !video || !SCENE_VIDEOS[sceneId]) {
+      resolve();
+      return;
+    }
+
+    overlay.style.display = "flex";
+
+    video.src = SCENE_VIDEOS[sceneId];
+    video.currentTime = 0;
+
+    video.onended = () => {
+      overlay.style.display = "none";
+      resolve();
+    };
+
+    video.onerror = () => {
+      overlay.style.display = "none";
+      resolve();
+    };
+
+    video.play().catch(() => {
+      overlay.style.display = "none";
+      resolve();
+    });
+  });
+}
 function 씬렌더링(씬ID) {
   // ✅ 여기 추가
   const video = document.getElementById('scene-video');
