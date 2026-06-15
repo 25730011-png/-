@@ -11,7 +11,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=UnifrakturMaguntia&family=Noto+Sans+KR:wght@300;400;500&family=Share+Tech+Mono&display=swap');
 
 /* ════════════════════════════════════════════════
-   CSS 변수 — 고딕 호러 팔레트
+   CSS 변수 — 고딕 호러 팔레트#bg-video {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  object-fit: cover; /* 화면 비율에 맞게 꽉 채움 */
+  z-index: -1;       /* 가장 뒤쪽으로 배치 */
+  opacity: 0.3;      /* 게임 분위기에 맞게 투명도 조절 (필요시 수정) */
+}
+
+/* 기존 배경 그라디언트 (씬별 색상 변화) */
+#bg-gradient {
+/* ... 기존 코드 유지 ... */
 ════════════════════════════════════════════════ */
 :root {
   /* 베이스 */
@@ -60,6 +72,15 @@
 html { font-size: 16px; }
 
 body
+   <!-- ── 배경 레이어 ── -->
+<!-- 추가된 비디오 태그 -->
+<video id="bg-video" autoplay loop muted playsinline>
+  <source src="./media/s1.mp4" type="video/mp4">
+</video>
+
+<div id="bg-gradient"></div>
+<div id="noise-overlay"></div>
+<!-- ... 기존 코드 유지 ... -->
    <!-- 씬 배경 영상 -->
 <video id="scene-video" autoplay muted playsinline
   style="
