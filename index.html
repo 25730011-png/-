@@ -1789,7 +1789,25 @@ function restartGame() {
     veil.classList.remove('active');
   }, 350);
 }
+function 씬렌더링(씬ID) {
+  // ✅ 여기 추가
+  const video = document.getElementById('scene-video');
+  const src = document.getElementById('scene-video-src');
+  const videoMap = {
+    'S1': 'media/S1.MP4',
+    'S2': 'media/S2.MP4',
+    // 씬 추가할수록 여기에 계속 추가
+  };
+  if (videoMap[씬ID]) {
+    src.src = videoMap[씬ID];
+    video.load();
+    video.play();
+    video.style.display = 'block';
+  } else {
+    video.style.display = 'none'; // 영상 없는 씬은 숨김
+  }
 
+  // 기존 코드 그대로 아래에...
 /* ── 초기화 ── */
 파티클생성();
 </script>
